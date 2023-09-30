@@ -1,0 +1,30 @@
+{
+  "name": "model-view-controller-tech-blog",
+  "version": "1.0.0",
+  "description": "create a simple CMS application-a tech blog site that allow you to create accounts, add blog posts, add comments, view posts and comments by every users, delete the posts.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/DirtyRice901/Model-View-Tech-Blog.git"
+  },
+  "author": "Kevin Rice \"DirtyRice\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DirtyRice901/Model-View-Tech-Blog/issues"
+  },
+  "homepage": "https://github.com/DirtyRice901/Model-View-Tech-Blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-session-sequelize": "^7.1.7",
+    "dotenv": "^16.3.1",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "gitignore": "^0.7.0",
+    "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1",
+    "sequelize": "^6.33.0"
+  }
+}
