@@ -1,5 +1,4 @@
 ///////// Importing required modules and dependencies //////////////////////////////////////////////////////////////////////////////////////
-const path = ('path');
 const express = require("express");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
