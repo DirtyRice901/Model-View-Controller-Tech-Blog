@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Blog, User, Comment } = require("../../models");
-const withAuth = require("../../utils/auth");
+const withAuth = require("../../utils/auth"); // Import the custom middleware function that redirects to login page if user is not logged in
 /// get all blogs with associated username ///
 router.get("/", async (req, res) => {
     try {
@@ -70,6 +70,11 @@ router.delete("/:id", withAuth, async (req, res) => {
         /// Delete all comments related to the blog ///
         await Comment.destroy({
             where: { blog_id: req.params.id },
+        });
+
+        /// Delete the blog ///
+        const deletedBlog = await Blog.destroy({
+            where: { id: req.params.id },
         });
 
         if (!deleteBlog) {

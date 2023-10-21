@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
         /// Pass serialized data to render homepage template with blogs and login status ///
         res.render("homepage", {
             blogs,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
         });
     }   catch (err) {
         res.status(500).json(err);
@@ -25,9 +25,9 @@ router.get("/", async (req, res) => {
 });
 
 ///////// Router to render individual post page ////////////////////////////////////////////////////////////////////////////////////////////
-router.get("/blog/:id", async (req, res) => {
+router.get("/blog/:id", withAuth, async (req, res) => {
     try {
-        const blogData = await Blog.findByPk(req.params.id, {
+        const blogData = await Blog.findByPk(req.params.id, {      /// Find a single blog post by its primary key ///
             include: [
                 { model: User, attributes: ["username"] }, 
                 { model: Comment, 
@@ -37,16 +37,14 @@ router.get("/blog/:id", async (req, res) => {
         });
     
         /// Convert blog data [blogData] to plain Javascript object so the template can read it /// 
-        const blog = blogData.get({ plain: true });
-        console.log(blog);
-    
+        const blog = blogData.get({ plain: true });   
          /// Pass serialized data to render homepage template with blogs and login status ///
         res.render("blog", {
             ...blog,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,          
         });
     }   catch (err) {
-        res.status(500).json(err);
+        res.status(500).json(err);          /// If there is a server error, return error status 500 ///
     }     
 });
 
@@ -58,7 +56,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
             include: [{ model: User, attributes: ["username"] }],
         });
         
-        const blogs = blogData.map((blog) => this.post.get({ plain: true }));
+        const blogs = blogData.map((blog) => post.get({ plain: true }));
 
         res.render("dashboard", {
             blogs,
@@ -89,9 +87,9 @@ router.get("/signup", (req,res) => {
    res.render("signup");
 });
 
-///////// Router to render the newBlog page ///////////////////////////////////////////////////////////////////////////////////////////////
-router.get("/newBlog", (req, res) => {
-    if (req.session.logged_in) {
+///////// Router to render the newblog page ///////////////////////////////////////////////////////////////////////////////////////////////
+router.get("/newblog", (req, res) => {
+    if (req.session.logged_in) {   /// If the user is already logged in, redirect the request to another route ///
         res.render("newblog");
         return;
     }
@@ -101,7 +99,7 @@ router.get("/newBlog", (req, res) => {
 ///////// Router to render the edit blog page //////////////////////////////////////////////////////////////////////////////////////////////
 router.get("/editblog/:id", async (req, res) => {
     try {
-        const blogData = await Blog.findByPk(req.params.id, {
+        const blogData = await Blog.findByPk(req.params.id, { /// Find a single blog post by its primary key ///
             include: [
                 { model: User, attributes: ["username"] },
                 {
@@ -120,4 +118,7 @@ router.get("/editblog/:id", async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+
 module.exports = router;
