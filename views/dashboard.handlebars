@@ -1,30 +1,18 @@
-<div class="menu-container">
-    <div class="card-header col-md-10">
-        <h2>
-            &#127881 dashboard
-        </h2>
-    </div>
-        <div>
-            <ol>
-                <li>
-                    dashboard
-                </li>
-                <li>
-                    dashboard
-                </li>
-                <li>
-                    dashboard
-                </li>
-                <li>
-                    dashboard
-                </li>
-                <li>
-                    dashboard
-                </li>
-                <li>
-                    dashboard
-                </li>
-            </ol>
+<main class="container-mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Dashboard</h1>
+            <a href="/newblog" class="btn btn-primary">Create a New Blog</a>
         </div>
     </div>
-</div>
+    <br>
+    <h1 class="mb-4">Bloggin'</h1>
+    {{#each blogs}}
+        <div class="post-container post mb-3">
+            <h2><a href="/blog/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
+            <p>Created by: {{user.username}} | Date: {{format_date createdAt}}</p>
+            <a href="/editblog/{{id}}" class="btn-warning">Edit Blog</a>
+            <button class="btn btn-danger delete-blog" data-blog-id="{{id}}">Delete</button>
+        </div>
+    {{/each}}
+</main>
