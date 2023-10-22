@@ -33,7 +33,7 @@ This challenge is to build a simple CMS application-a tech blog site that allow 
 
 * [express-session](https://www.npmjs.com/package/express-session)
 
-* [sonnect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
+* [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 
 
 ## Usage
