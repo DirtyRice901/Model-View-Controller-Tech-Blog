@@ -1,8 +1,9 @@
 ////////// Import the Sequelize constructor from the library ////////////////////////////////////////////////////////////////////////////////
 const Sequelize = require('sequelize');
-
 ///////// Import sensitive data from .env //////////////////////////////////////////////////////////////////////////////////////////////////
-require('dotenv').config();
+
+require('dotenv').config(); //////////////// This is a node.js package that loads environment variables from a .env file into process.env ////
+
 
 //////// Create a sequelize instance with the database connection details //////////////////////////////////////////////////////////////////
 const sequelize = process.env.JAWSDB_URL   //////////JawsDB is a MySQL/Maria DBaaS for no custom coding and easy usage /////////////////////
@@ -11,7 +12,7 @@ const sequelize = process.env.JAWSDB_URL   //////////JawsDB is a MySQL/Maria DBa
         host: 'localhost',
         dialect: 'mysql',
         dialectOptions: {
-            decimalNumbers: true,
+            decimalNumbers: true, 
         },
     });
 

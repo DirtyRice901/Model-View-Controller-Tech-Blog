@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connections");
+const sequelize = require("../config/connection");
 
 class Blog extends Model {}
 
@@ -18,8 +18,8 @@ Blog.init(
         content: {
             type: DataTypes.TEXT,
             allowNull: false,
-            validate: {
-                len: [1],
+            validate: {    //validate the content to be at least one character long
+                len: [1], 
             },
         },
         user_id: {
