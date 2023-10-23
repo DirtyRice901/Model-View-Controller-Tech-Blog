@@ -1,0 +1,15 @@
+body {
+    background-image: url('../images/gas\ mask\ -\ Copy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.blog-container {
+    transition: background-color 0.5s ease;
+}
+
+.blog-container:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.5em;
+}
