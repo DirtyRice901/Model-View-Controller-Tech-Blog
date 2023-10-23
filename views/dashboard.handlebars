@@ -8,7 +8,7 @@
     <br>
     <h1 class="mb-4">Bloggin'</h1>
     {{#each blogs}}
-        <div class="post-container post mb-3">
+        <div class="blog-container post mb-3">
             <h2><a href="/blog/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
             <p>Created by: {{user.username}} | Date: {{format_date createdAt}}</p>
             <a href="/editblog/{{id}}" class="btn-warning">Edit Blog</a>
