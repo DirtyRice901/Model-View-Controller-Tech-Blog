@@ -13,10 +13,12 @@ Blog.init(
         },
         title: {
             type: DataTypes.STRING,
+            defaultValue: "New Blog Post",
             allowNull: false,
         },
         content: {
             type: DataTypes.TEXT,
+            defaultValue: "Write your blog post here!",
             allowNull: false,
             validate: {    //validate the content to be at least one character long
                 len: [1], 
@@ -24,6 +26,7 @@ Blog.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
+            defaultValue: 1,
             references: {
                 model: "user",
                 key: "id",
